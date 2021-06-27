@@ -40,7 +40,7 @@ function Signup(props) {
             async function fn3() {
                 // link get 
                 let downloadurl = await
-                    uploadTaskListener.snapshot.ref.getDownloadURL();
+                 uploadTaskListener.snapshot.ref.getDownloadURL();
                 database.users.doc(uid).set({
                     email: email,
                     userId: uid,

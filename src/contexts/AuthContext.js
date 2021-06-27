@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import auth from '../firebase';
 
-//what is the meaning of this
 export const AuthContext = React.createContext();
 export function AuthProvider({ children }) {
     const [currentUser, setUser] = useState();
     const [loading, setLoading] = useState(true);
-    async function login(email, password) {
+     function login(email, password) {
         // firebase
-        return await auth.signInWithEmailAndPassword(email, password);
+        return  auth.signInWithEmailAndPassword(email, password);
 
     }
-    async function signOut() {
+    function signOut() {
         // firebase signup
-        return await auth.signOut();
+        return  auth.signOut();
     }
-    async function signUp(email,password){
-        return await auth.createUserWithEmailAndPassword(email, password);
+     function signup(email,password){
+        return  auth.createUserWithEmailAndPassword(email, password);
     }
     useEffect(() => {
         // eventListener
@@ -24,20 +23,24 @@ export function AuthProvider({ children }) {
         let cleanUp = auth.onAuthStateChanged(user => {
             console.log("inside listener", user);
             setUser(user);
-            setLoading(false)
+            setLoading(false);
         })
-        return cleanUp;
+        return function (){
+            console.log("out");
+            cleanUp();
+        }
     }, []);
     const value = {
+        currentUser,
+        signOut,
         login,
-        signUp,
-        signOut, currentUser
+        signup
     }
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
-        //jab bhi ye values change hogi isse attach hooks tigger ho jayega 
+        //jab bhi ye values change hogi isse attach hooks trigger ho jayega 
         // jaise app.js me privateRoute wala hooke  chal jayega
 
     )
