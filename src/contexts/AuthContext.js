@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import auth from '../firebase';
+import database from '../firebase';
 
 export const AuthContext = React.createContext();
 export function AuthProvider({ children }) {
@@ -20,6 +21,7 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         // eventListener
         // console.log("added event Listener")
+        console.log("username ye he "+database);
         let cleanUp = auth.onAuthStateChanged(user => {
             console.log("inside listener", user);
             setUser(user);

@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import T1 from './T1';
+import Material from "./Material";
 ReactDOM.render(
   <React.StrictMode>
+    {/* <Material></Material> */}
     <App></App>
+    {/* <T1></T1> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
