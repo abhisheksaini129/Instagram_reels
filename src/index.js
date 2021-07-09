@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import T1 from './T1';
 import Material from "./Material";
+import IntersectionDemo from "./intersectionObserver/IntersectionDemo";
 ReactDOM.render(
   <React.StrictMode>
     {/* <Material></Material> */}
     <App></App>
     {/* <T1></T1> */}
+    {/* <IntersectionDemo></IntersectionDemo> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
